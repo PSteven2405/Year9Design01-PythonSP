@@ -11,7 +11,11 @@ def submit():
 	v = round(v,3)
 
 	output.config(state="normal")
-	output.insert(tk.INSERT, v)
+
+	OutputValue = "Given\nradius:"+str(r)+" units\nheight:"+str(h)+" units\nThe Volume Is:"+str(v)+" units cubed\n\n"
+
+	output.delete(1.0,tk.END)
+	output.insert(tk.INSERT, OutputValue)
 	output.config(state="disabled")
 
 
@@ -20,7 +24,7 @@ def submit():
 
 
 
-root = tk.Tk()
+root = tk.Tk() #add a Root Window
 root.title("Volume of a cylinder")
 
 labr = tk.Label(root, text="radius")
@@ -50,4 +54,4 @@ output.pack()
 
 
 
-root.mainloop()
+root.mainloop() #Displays Window, and sets up an "event"
