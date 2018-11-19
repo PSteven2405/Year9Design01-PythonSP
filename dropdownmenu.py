@@ -12,9 +12,10 @@ mainframe.pack(pady = 100, padx = 100)
 
 tkvar =tk.StringVar(root)
 
-choices = { 'Pizza', 'Lasagne', 'Fries', 'Fish', 'Potatoe'}
+choices = {'Pizza', 'Lasagne', 'Fries', 'Fish', 'Potatoe'}
 tkvar.set('Pizza')
 
+'Pizza' == 
 popupMenu =tk.OptionMenu(mainframe, tkvar, *choices)
 tk.Label(mainframe, text="Choose a Dish").grid(row = 1, column = 1)
 popupMenu.grid(row = 2, column = 1)
