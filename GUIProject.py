@@ -21,6 +21,17 @@ class Display:
 			Date = self.DBEntryT1.get()
 			Price = self.PoIEntryT1.get()
 
+			if self.check1Var.get() == 1:
+
+				if self.varT1.get() == "CAD":
+					Price = float(Price)*(1.05)
+				elif self.varT1.get() == "USD":
+					Price = float(Price)*(1.075)
+				elif self.varT1.get() == "SAR":
+					Price = float(Price)*(1.05)
+				elif self.varT1.get() == "IDR":
+					Price = float(Price)*(1.1)
+
 			DateItemPrice = "\n"+"("+Item+")"+","+" "+"["+"$"+str(Price)+"]"+","+" "+"{"+"Date Purchased:"+Date+"}"
 			TotalPrice = "Total:"+"$"+str(Price)
 			
@@ -39,30 +50,10 @@ class Display:
 			self.DBEntryT1.delete(0, tk.END)
 			self.PoIEntryT1.delete(0, tk.END)
 
+
+			
 			
 
-			if self.check1Var.get() == 1:
-
-				if self.varT1.get() == "CAD":
-					Price = float(Price)*(1.15)
-				elif self.varT1.get() == "USD":
-					Price = float(Price)*(1)
-				elif self.varT1.get() == "IDR":
-					Price = float(Price)*(1.1)
-				elif self.varT1.get() == "SAR":
-					Price = float(Price)*(1.05)
-			
-			if self.check1Var.get() == 0:
-				
-				self.OutputT1.config(state="normal")
-				self.OutputT1.delete(1.0, tk.END)
-				self.OutputT1.insert(tk.INSERT, errorMessage)
-				self.OutputT1.config(state="disabled")
-				errorMessage = "This Number is INACCURATE!! Please Choose A Tax!! CLEAR LIST TO DELETE MESSAGE!"
-				
-
-				self.OutputT1.config(state="disabled")
-			
 
 		def SaveList():
 			print("List Saved")
@@ -142,7 +133,7 @@ class Display:
 		self.frame = tk.Frame(self.root)
 		
 		self.varT1 = tk.StringVar()
-		self.varT1.set("Choose A Currency")
+		self.varT1.set("CAD")
 		self.varT1.trace("w",changevart1)
 
 		self.varT2 = tk.StringVar()
@@ -171,7 +162,7 @@ class Display:
 		self.CoTaxT1.grid(row = 2, column = 3, sticky="W")
 		#########################[Currency Dropdown Menu 1 and 2]########################
 		self.DDCT1 = tk.OptionMenu(self.tab1,self.varT1, OPTIONST1[0], OPTIONST1[1], OPTIONST1[2], OPTIONST1[3])
-		self.varT1.set("Choose A Currency")
+		self.varT1.set("CAD")
 
 		self.DDCT1.config(font=("Arial", 13))
 		self.DDCT1.grid(row=3, column=3, sticky="W")
